@@ -17,8 +17,13 @@ public class TablePowers {
         for(int i = 1; i <= usrNum; i++) {
             int squared = (int) Math.pow(i, 2);
             int cubed = (int) Math.pow(i, 3);
+
             System.out.print(i);
-            System.out.printf("%8s", "| ");
+            if (i >= 10) {
+                System.out.printf("%7s", "| ");
+            } else {
+                System.out.printf("%8s", "| ");
+            }
 
             System.out.print(squared);
             if (squared >= 10) {
