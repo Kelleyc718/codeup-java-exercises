@@ -3,38 +3,40 @@ import java.util.Scanner;
 public class ControlFlowExercises {
     public static void main(String[] args) {
             String userInput;
+            String contInput = "";
+            Character mod;
 
             Scanner sc = new Scanner(System.in);
             do {
-                System.out.println("What number would you like to go up to?");
+                int usrNum;
+                System.out.println("Please enter your score");
                 userInput = sc.nextLine();
-                int usrNum = Integer.parseInt(userInput);
+                usrNum = Integer.parseInt(userInput);
 
-                System.out.println("Here is your table!");
-                System.out.println("number |  squared   | cubed");
-                System.out.println("------ |  -------   | -----");
-
-                for (int i = 1; i <= usrNum; i++) {
-                    int squared = (int) Math.pow(i, 2);
-                    int cubed = (int) Math.pow(i, 3);
-
-                    System.out.print(i);
-                    if (i >= 10) {
-                        System.out.printf("%7s", "| ");
-                    } else {
-                        System.out.printf("%8s", "| ");
-                    }
-
-                    System.out.print(squared);
-                    if (squared >= 10) {
-                        System.out.printf("%11s", "| ");
-                    } else {
-                        System.out.printf("%12s", "| ");
-                    }
-                    System.out.print(cubed);
-                    System.out.print("\n");
+                if (usrNum >= 90) {
+                        System.out.print("A");
+                } else if (usrNum >= 80) {
+                    System.out.print("B");
+                } else if (usrNum >= 70) {
+                    System.out.print("C");
+                } else if (usrNum >= 60) {
+                    System.out.print("D");
+                } else {
+                    System.out.print("F");
                 }
-                System.out.println("Would you like to continue (y/n)?");
+
+                if (usrNum % 10 >= 7) {
+                    mod = '+';
+                    System.out.println(mod);
+                } else if (usrNum % 10 <= 3) {
+                    mod = '-';
+                    System.out.println(mod);
+                } else {
+                    System.out.println();
+                }
+
+
+                System.out.println("Do you have another score to enter (y/n)?");
                 userInput = sc.nextLine();
             } while(userInput.equals("y"));
     }
