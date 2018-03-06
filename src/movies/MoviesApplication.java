@@ -9,16 +9,38 @@ public class MoviesApplication {
     private static Input userInput = new Input();
 
     public static void main(String[] args) {
-        int userChoice;
         do {
             menu();
-            userChoice = userInput.getInt();
-            String category = menuChoice(userChoice);
-            if (userChoice != 1 && userChoice != 6) {
-                getCat(category);
+            int userChoice = userInput.getInt(0, 7);
+            switch (userChoice) {
+                case 0:
+                    System.exit(0);
+                case 1:
+                    getAll();
+                    break;
+                case 2:
+                    getCat("animated");
+                    break;
+                case 3:
+                    getCat("drama");
+                    break;
+                case 4:
+                    getCat("horror");
+                    break;
+                case 5:
+                    getCat("scifi");
+                    break;
+                case 6:
+                    addMovie();
+                    break;
+                case 7:
+                    movieSearch();
+                    break;
+                default:
+                    System.out.println("Not a valid entry.");
+                    break;
             }
-        } while (userChoice != 0);
-        System.out.println("Have a good day.");
+        } while (true);
     }
 
     public static void menu() {
@@ -32,49 +54,20 @@ public class MoviesApplication {
         System.out.print("Enter your choice: \n");
     }
 
-    public static String menuChoice(int userChoice) {
-        switch (userChoice) {
-
-            case 1:
-                getAll();
-                return "all";
-
-            case 2:
-                return "animated";
-
-            case 3:
-                return "drama";
-
-            case 4:
-                return "horror";
-
-            case 5:
-                return "scifi";
-
-            case 6:
-                addMovie();
-                return "Adding movie";
-
-            case 7:
-                movieSearch();
-                return "Movie search";
-
-            default:
-                return "exit";
-
-        }
+    public static void showMovie(Movie movie) {
+        System.out.println(movie);
     }
 
     public static void getAll() {
         for (Movie movie : movies) {
-            System.out.println(movie.getName() + " - " + movie.getCategory());
+            showMovie(movie);
         }
     }
 
     public static void getCat(String category) {
         for (Movie movie : movies) {
             if (movie.getCategory().equalsIgnoreCase(category)) {
-                System.out.println(movie.getName() + " - " + movie.getCategory() + "" + ".");
+                showMovie(movie);
             }
         }
     }
@@ -90,11 +83,13 @@ public class MoviesApplication {
 
 
     public static void movieSearch() {
-        userInput.getString();
-        if (movies.contains(userInput)) {
-            System.out.println("Movie found");
-            } else {
-                System.out.println("No results found");
+        System.out.println("Enter the name of the movie you're looking for: ");
+        String search = userInput.getString();
+        for (Movie movie : movies) {
+            if (movie.getName().equalsIgnoreCase(search)) {
+                showMovie(movie);
+                break;
             }
         }
     }
+}

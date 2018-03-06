@@ -28,6 +28,7 @@ public class Movie {
     public void setCategory(String category) {
         this.category = category;
     }
+
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -36,5 +37,13 @@ public class Movie {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }
