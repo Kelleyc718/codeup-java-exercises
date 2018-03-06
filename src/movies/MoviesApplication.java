@@ -55,6 +55,10 @@ public class MoviesApplication {
                 addMovie();
                 return "Adding movie";
 
+            case 7:
+                movieSearch();
+                return "Movie search";
+
             default:
                 return "exit";
 
@@ -83,4 +87,14 @@ public class MoviesApplication {
 
         movies.add(new Movie(name, category));
     }
-}
+
+
+    public static void movieSearch() {
+        userInput.getString();
+        if (movies.contains(userInput)) {
+            System.out.println("Movie found");
+            } else {
+                System.out.println("No results found");
+            }
+        }
+    }

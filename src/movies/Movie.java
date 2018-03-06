@@ -28,4 +28,13 @@ public class Movie {
     public void setCategory(String category) {
         this.category = category;
     }
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }
