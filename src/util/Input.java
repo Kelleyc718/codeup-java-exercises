@@ -5,7 +5,7 @@ public class Input {
     private Scanner sc;
 
     public Input () {
-        this.sc = new Scanner(System.in);
+        this.sc = new Scanner(System.in).useDelimiter("\n");
     }
 
     public String getString() {
@@ -34,12 +34,16 @@ public class Input {
     }
 
     public int getInt() {
-        System.out.println("get int test");
+        return this.sc.nextInt();
+    }
+    public int getInt(String prompt) {
+        System.out.println("Enter a number");
         return this.sc.nextInt();
     }
 
+
     public double getDouble(double min, double max) {
-        System.out.println("double min/max test");
+        System.out.println("Enter a number between" + min + " and " + max);
         double userInput = this.getDouble();
         if (userInput < min || userInput > max) {
             return getDouble(min, max);
@@ -49,7 +53,10 @@ public class Input {
     }
 
     public double getDouble() {
-        System.out.println("double test");
+        return this.sc.nextDouble();
+    }
+    public double getDouble(String prompt) {
+        System.out.println("Enter a number (decimals are ok)");
         return this.sc.nextDouble();
     }
 }
