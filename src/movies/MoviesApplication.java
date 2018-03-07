@@ -50,7 +50,8 @@ public class MoviesApplication {
         System.out.println("3 - drama");
         System.out.println("4 - horror");
         System.out.println("5 - sci-fi");
-        System.out.println("6 - add new movie");
+        System.out.println("6 - Add new movie");
+        System.out.println("7 - Search for a movie");
         System.out.print("Enter your choice: \n");
     }
 
