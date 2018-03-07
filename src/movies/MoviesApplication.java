@@ -84,12 +84,12 @@ public class MoviesApplication {
 
     public static void movieSearch() {
         System.out.println("Enter the name of the movie you're looking for: ");
-        String search = userInput.getString();
-        for (Movie movie : movies) {
-            if (movie.getName().equalsIgnoreCase(search)) {
-                showMovie(movie);
-                break;
-            }
+        String name = userInput.getString();
+        Movie movie = new Movie(name);
+        if (movies.contains(movie)) {
+            System.out.println(movies.get(movies.indexOf(movie)));
+        } else {
+            System.out.println("Movie does not exist.");
         }
     }
 }
