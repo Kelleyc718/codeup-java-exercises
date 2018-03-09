@@ -1,7 +1,6 @@
 package Grocery;
 
 import util.Input;
-
 import java.util.*;
 
 public class shoppingList {
@@ -9,27 +8,26 @@ public class shoppingList {
     private static HashMap<Item, Integer> groceryList = currentGroceries();
 
     public static void main(String[] args) {
-        System.out.println("\nShopping List.");
-        System.out.println("\nWould you like to create a new list?\n");
+        System.out.println("Shopping List.");
+        System.out.println("\nWould you like to create a new list?");
         choice();
         currentList(groceryList);
-        System.out.println("Have a nice day");
+        System.out.println("\nHave a nice day");
     }
     public static void choice() {
         boolean userChoice;
-        do {
-            userChoice = userInput.yesNo();
-            if (!userChoice) {
-                break;
-            } else {
-                System.out.println("Would you like to add a new item?");
+        userChoice = userInput.yesNo();
+        if (!userChoice) {
+            System.out.println("No new items to add.");
+        } else {
+            do {
+                System.out.println("\nWould you like to add a new item?");
                 userChoice = userInput.yesNo();
                 if (userChoice) {
-                    //addItem();
+                    groceryList = addItem();
                 }
-            }
-            System.out.println("Would you like to add another item?");
-        } while (userChoice);
+            } while (userChoice);
+        }
     }
 
     public static HashMap<Item, Integer> currentGroceries() {
@@ -45,22 +43,34 @@ public class shoppingList {
         return groceryList;
     }
     
-   /** public static Object addItem() {
-        System.out.println("Please enter the name of your item...");
-        String newItemName = userInput.getString();
+   public static HashMap<Item, Integer> addItem() {
+       System.out.println("\nPlease enter the name of your item...");
+       String newItemName = userInput.getString();
 
-        System.out.println("Please enter how many you want...");
-        int newItemQuantity = userInput.getInt(1, 100);
+       System.out.println("\nPlease enter how many you want...");
+       int newItemQuantity = userInput.getInt(1, 100);
 
-        Item newItem = new Item(newItemName, newItemQuantity);
-        groceryList.put(newItemName, newItemQuantity);
-        return groceryList;
-    }*/
+       System.out.println("\nEnter the category of this item...");
+       String newItemCategory = userInput.getString();
+
+       Item newItem = new Item(newItemName, newItemCategory);
+       groceryList.put(newItem, newItemQuantity);
+       return groceryList;
+   }
 
     public static void currentList(HashMap<Item, Integer> groceryList) {
-        System.out.println("Here is your shopping list: ");
+        System.out.println("\nHere is your shopping list: ");
+        System.out.printf("%-5s", "Item Name");
+        System.out.printf("%-5s", " | ");
+        System.out.printf("%-5s", "Quantity");
+        System.out.printf("%-5s", " | ");
+        System.out.printf("%-5s", "Category\n");
         for (Map.Entry<Item, Integer> shoppingList : groceryList.entrySet()) {
-            System.out.print(shoppingList.getValue());
+            System.out.printf("%-5s", shoppingList.getKey().getName());
+            System.out.printf("%-5s", " | ");
+            System.out.printf("%-5s", shoppingList.getValue());
+            System.out.printf("%-5s", " | ");
+            System.out.printf("%-5s", shoppingList.getKey().getCategory() + "\n");
         }
     }
 }
