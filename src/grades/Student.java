@@ -4,14 +4,15 @@ import java.util.*;
 
 public class Student {
     private String name;
-    private List<Integer> grades = new ArrayList<>();
+    private ArrayList<Integer> grades;
 
-    public Student(String name, List<Integer> grades) {
+    public Student(String name) {
         this.name = name;
         grades = new ArrayList<>();
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -27,14 +28,7 @@ public class Student {
         return sum / grades.size();
     }
 
-    public static void main(String[] args) {
-        Student newStudent = new Student("Chris", List.of());
-        System.out.println(newStudent.name);
-        newStudent.addGrade(45);
-        newStudent.addGrade(67);
-        newStudent.addGrade(89);
-        newStudent.addGrade(34);
-        System.out.println(newStudent.grades);
-        System.out.println(newStudent.getGradeAverage());
+    public List<Integer> grades() {
+        return grades;
     }
 }
