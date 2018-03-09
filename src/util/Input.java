@@ -1,5 +1,5 @@
 package util;
-import java.util.Scanner;
+import java.util.*;
 
 public class Input {
     private Scanner sc;
@@ -9,22 +9,18 @@ public class Input {
     }
 
     public String getString() {
-        return this.sc.next();
-    }
-
-    public String getString(String prompt) {
-        System.out.println(prompt);
+        System.out.println("\nEnter a string\n");
         return this.sc.next();
     }
 
     public boolean yesNo() {
-        System.out.println("Enter \"yes\" or \"no\"");
+        System.out.println("\nEnter \"yes\" or \"no\"\n");
         String input = this.sc.next();
         return (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"));
     }
 
-    public int getInt(int min, int max) {
-        System.out.println("Enter a integer between " + min + " and " + max + ".");
+    public int getInt(int min, int max)  {
+        System.out.print("\nFor the range of " + min + " and " + max + "\n");
         int userInput = this.getInt();
         if (userInput < min || userInput > max) {
             return getInt(min, max);
@@ -34,16 +30,22 @@ public class Input {
     }
 
     public int getInt() {
-        return this.sc.nextInt();
+        System.out.println("\nEnter an integer\n");
+        while(true) {
+            try {
+                return this.sc.nextInt();
+            }
+            catch (InputMismatchException e) {
+                sc.next();
+                System.out.print("\nThat’s not " + "an integer. Try again: \n");
+            }
+        }
     }
-    public int getInt(String prompt) {
-        System.out.println("Enter a number");
-        return this.sc.nextInt();
-    }
+
 
 
     public double getDouble(double min, double max) {
-        System.out.println("Enter a number between" + min + " and " + max);
+        System.out.print("\nFor the range of " + min + " and " + max + "\n");
         double userInput = this.getDouble();
         if (userInput < min || userInput > max) {
             return getDouble(min, max);
@@ -53,10 +55,15 @@ public class Input {
     }
 
     public double getDouble() {
-        return this.sc.nextDouble();
-    }
-    public double getDouble(String prompt) {
-        System.out.println("Enter a number (decimals are ok)");
-        return this.sc.nextDouble();
+        System.out.println("\nEnter a double\n");
+        while(true) {
+            try {
+                return this.sc.nextDouble();
+            }
+            catch (InputMismatchException e) {
+                sc.next();
+                System.out.print("That’s not " + "a Double. Try again: ");
+            }
+        }
     }
 }

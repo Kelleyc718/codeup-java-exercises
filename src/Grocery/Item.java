@@ -1,20 +1,20 @@
 package Grocery;
 
 public class Item {
-    private int quantity;
     private String name;
+    private String category;
 
-    public Item(String name, int quantity) {
+    public Item(String name, String category) {
         this.name = name;
-        this.quantity = quantity;
+        this.category = category;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getCategory() {
+        return category;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {

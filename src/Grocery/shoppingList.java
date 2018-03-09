@@ -33,10 +33,10 @@ public class shoppingList {
     }
 
     public static HashMap<Item, Integer> currentGroceries() {
-        Item oranges = new Item("orange", 5);
-        Item apples = new Item("apple", 5);
-        Item potatoes = new Item("potatoes", 5);
-        Item beer = new Item("beer", 5);
+        Item oranges = new Item("orange", "fruit");
+        Item apples = new Item("apple", "fruit");
+        Item potatoes = new Item("potatoes", "vegetable");
+        Item beer = new Item("beer", "junk");
         HashMap<Item, Integer> groceryList = new HashMap<>();
         groceryList.put(oranges, 5);
         groceryList.put(apples, 5);
